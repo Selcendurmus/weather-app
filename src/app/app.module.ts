@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { WeatherImageComponent } from './weather-image/weather-image.component';
 import { CityImageComponent } from './city-image/city-image.component';
+import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherImageComponent,
-    CityImageComponent
+    CityImageComponent,
+    CurrentWeatherComponent
   ],
   imports: [
     BrowserModule
