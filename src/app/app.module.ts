@@ -6,6 +6,11 @@ import { WeatherImageComponent } from './weather-image/weather-image.component';
 import { CityImageComponent } from './city-image/city-image.component';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 import { FiveDayWeatherForecastComponent } from './five-day-weather-forecast/five-day-weather-forecast.component';
+import { WeatherService } from './weather/weather.service';
+import { HttpClientModule } from '@angular/common/http' ;
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule } from '@angular/material';
+
+
 
 @NgModule({
   declarations: [
@@ -16,9 +21,15 @@ import { FiveDayWeatherForecastComponent } from './five-day-weather-forecast/fiv
     FiveDayWeatherForecastComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    HttpClientModule,
+    MatButtonModule, 
+    MatToolbarModule, 
+    MatIconModule,
+    MatCardModule
+  
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

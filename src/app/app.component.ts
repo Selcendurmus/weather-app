@@ -2,8 +2,19 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+  
+  <div style="text-align:center">
+  <mat-toolbar color="primary">
+    LocalCast Weather
+  </mat-toolbar>
+   <div>Your city, your forecast, right now!</div>
+   <mat-card>
+    <h2>Current Weather</h2>
+    <app-current-weather></app-current-weather>
+    </mat-card>
+  </div>
+`
 })
 export class AppComponent {
   title = 'app';
