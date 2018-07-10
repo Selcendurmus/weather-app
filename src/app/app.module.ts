@@ -8,7 +8,11 @@ import { CurrentWeatherComponent } from './current-weather/current-weather.compo
 import { FiveDayWeatherForecastComponent } from './five-day-weather-forecast/five-day-weather-forecast.component';
 import { WeatherService } from './weather/weather.service';
 import { HttpClientModule } from '@angular/common/http' ;
-import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CitySearchComponent } from './city-search/city-search.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -18,7 +22,10 @@ import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule } from 
     WeatherImageComponent,
     CityImageComponent,
     CurrentWeatherComponent,
-    FiveDayWeatherForecastComponent
+    FiveDayWeatherForecastComponent,
+    CitySearchComponent,
+    
+
   ],
   imports: [
     BrowserModule, 
@@ -26,9 +33,32 @@ import { MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule } from 
     MatButtonModule, 
     MatToolbarModule, 
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule
+    
+  
+    
+    
   
   ],
+
+  exports: [
+    MatButtonModule, 
+    MatToolbarModule, 
+    MatIconModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+  
+  
+  ],
+
   providers: [WeatherService],
   bootstrap: [AppComponent]
 })

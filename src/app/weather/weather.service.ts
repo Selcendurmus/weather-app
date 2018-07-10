@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ICurrentWeather } from 'src/app/interfaces/icurrent-weather'
 
+
 interface ICurrentWeatherData {
   weather: [{
     description: string,
@@ -27,18 +28,34 @@ export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCurrentWeather(city: string, country: string) {
-    return this.httpClient.get<ICurrentWeatherData>(
-      `${environment.baseUrl}api.openweathermap.org/data/2.5/weather?`+
-      `q=${city},${country}&appid=${environment.appId}`
-    )
-   .pipe(
-    map(data => 
-      this.transformToICurrentWeather(data)
-    )
-  )
-    
+  getCurrentWeather(
+    search: string | number,
+    country?: string
+  ) : Observable<ICurrentWeather> {
+    let uriParams = ''
+    if (typeof search === 'string') {
+      uriParams = `q=${search}`
+    } else {
+      uriParams = `zip=${search}`
+    }
+
+    if (country) {
+      uriParams = `${uriParams},${country}`
+    }
+    console.log(uriParams)
+    return this.getCurrentWeatherHelper(uriParams)
   }
+
+  private getCurrentWeatherHelper(uriParams: string): Observable<ICurrentWeather> {
+    return this.httpClient
+    .get<ICurrentWeatherData>(
+      `${environment.baseUrl}api.openweathermap.org/data/2.5/weather?`+
+      `${uriParams}&appid=${environment.appId}`
+    )
+    .pipe(map(data => this.transformToICurrentWeather(data)))
+  }
+
+  
   private transformToICurrentWeather(data: ICurrentWeatherData): 
   ICurrentWeather {
     return {
