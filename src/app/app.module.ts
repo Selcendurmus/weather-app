@@ -55,8 +55,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-  
-  
+    BrowserAnimationsModule
   ],
 
   providers: [WeatherService],
